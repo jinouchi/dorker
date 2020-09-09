@@ -1,0 +1,69 @@
+<html>
+<head>
+<script type="text/javascript">
+// Define Variables
+
+var searchTerms = ["ssn", "password", "passwords", "first name" , "last name", "confidential"];
+var filetypes = ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx"]
+
+
+function SearchGoogle() {
+    
+    // Get value from form
+    var url = document.getElementById('url').value
+
+    // Search Google for search terms only
+    searchTerms.forEach(searchTerm =>
+        window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+        )    
+        
+    // Search Google for filetypes only
+    filetypes.forEach(filetype =>
+        window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "&oq=site%3A" + url + "+filetype%3" + filetype + "&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+    )
+
+    // EXPERIMENTAL:
+    // Search Google for each search term + filetype
+    // filetypes.forEach(filetype =>
+    //     searchTerms.forEach(searchTerm =>
+    //         window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+filetype%3" + filetype + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+    //         )
+    //     )
+}
+
+function SearchDuckDuckGo() {
+
+    // Get value from form
+    var url = document.getElementById('url').value
+
+    // Search DuckDuckGo for search terms only
+    searchTerms.forEach(searchTerm =>
+        window.open("https://duckduckgo.com/?q=site%3A+" + url + "+%22" + searchTerm + "%22&t=h_&ia=web")
+        )    
+
+    // Search DuckDuckGo for filetype only
+    filetypes.forEach(filetype =>
+        window.open("https://duckduckgo.com/?q=site%3A+" + url + "+filetype%3A" + filetype + "%22&t=h_&ia=web")
+        )    
+}
+
+</script>
+</head>
+
+<body>
+<form>
+    <input type="text" id="url"></input>
+    <input type=button value="Search Google" onclick="SearchGoogle()">
+    <input type=button value="Search DuckDuckgo" onclick="SearchDuckDuckGo()">
+</form>
+<p>NOTE: This tool opens dozens of tabs at once. Your browser will most likely get flagged for suspicious activity for making automated requests. When this happens, complete a captcha, close all the tabs, and re-run the search. You should be good for an hour or so.</p>
+</body>
+
+</html>
+
+<!-- https://www.google.com/search?safe=active&sxsrf=ALeKk01y_Qnee6ZbtVk_JI7dCakhkW6eZA%3A1599674134019&ei=FhdZX8hX0a61BpCMt8gL&q=site%3Aarcticwolf.com+filetype%3Axlsx+%22password%22&oq=site%3Aarcticwolf.com+filetype%3Axlsx+%22password%22&gs_lcp=CgZwc3ktYWIQA1CbOli6Q2ChRmgAcAB4AIABngKIAZkFkgEFMC4zLjGYAQCgAQGqAQdnd3Mtd2l6wAEB&sclient=psy-ab&ved=0ahUKEwjIuo7E0tzrAhVRV80KHRDGDbkQ4dUDCA0&uact=5 -->
+
+
+<!-- Code for sleep: 
+    await new Promise(r => setTimeout(r, 2000)); 
+-->
