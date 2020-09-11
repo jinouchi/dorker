@@ -1,69 +1,182 @@
 <html>
 <head>
-<script type="text/javascript">
-// Define Variables
-
-var searchTerms = ["ssn", "password", "passwords", "first name" , "last name", "confidential"];
-var filetypes = ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx"]
-
-
-function SearchGoogle() {
-    
-    // Get value from form
-    var url = document.getElementById('url').value
-
-    // Search Google for search terms only
-    searchTerms.forEach(searchTerm =>
-        window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
-        )    
-        
-    // Search Google for filetypes only
-    filetypes.forEach(filetype =>
-        window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "&oq=site%3A" + url + "+filetype%3" + filetype + "&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
-    )
-
-    // EXPERIMENTAL:
-    // Search Google for each search term + filetype
-    // filetypes.forEach(filetype =>
-    //     searchTerms.forEach(searchTerm =>
-    //         window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+filetype%3" + filetype + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
-    //         )
-    //     )
-}
-
-function SearchDuckDuckGo() {
-
-    // Get value from form
-    var url = document.getElementById('url').value
-
-    // Search DuckDuckGo for search terms only
-    searchTerms.forEach(searchTerm =>
-        window.open("https://duckduckgo.com/?q=site%3A+" + url + "+%22" + searchTerm + "%22&t=h_&ia=web")
-        )    
-
-    // Search DuckDuckGo for filetype only
-    filetypes.forEach(filetype =>
-        window.open("https://duckduckgo.com/?q=site%3A+" + url + "+filetype%3A" + filetype + "&t=h_&ia=web")
-        )    
-}
-
-</script>
+    <!-- Begin CSS Styling -->
+    <style>
+        html {
+            background-color: black;
+            color: darkgray;
+        }
+        input {
+            border-color: darkgray;
+            background-color: black;
+            color: darkgray;
+        }
+        #url {
+            line-height: 2;
+        }
+        .logo {
+            width: 150px;
+            height: 150px;
+        }
+        .dorker {
+            font-family: product-sans, "product sans", sans-serif;
+        }
+        #buttonTable tr td {
+            width: 150px;
+        }
+        #btnRow {
+            vertical-align: top;
+        }
+        .searchBtn {
+            white-space: normal;
+            width: 100%;
+            background-color: #111111;
+        }
+    </style>
 </head>
 
 <body>
-<form>
-    <input type="text" id="url" placeholder="example.com"></input>
-    <input type=button value="Search Google" onclick="SearchGoogle()">
-    <input type=button value="Search DuckDuckgo" onclick="SearchDuckDuckGo()">
-</form>
-<p>INSTRUCTIONS: 
-    <ol>
-        <li>Enter a website, i.e. "yourdomain.com".</li>
-        <li>Click a button.</li>
-    </ol> 
-</p>
-<p>NOTE: Your browser will prevent this page from opening more than one new tab at a time. You must allow popups for this page in order for this tool to work correclty.</p>
-<p>NOTE: This tool opens dozens of tabs at once. Your browser may get flagged for suspicious activity for making automated requests. When this happens, complete a captcha, close all the tabs, and re-run the search. You should be good for an hour or so.</p>
+    <h1 class="dorker">
+        <span style="color: #4285F4;">D</span><span style="color: #DB4437;">o</span><span style="color: #F4B400;">r</span><span style="color: #4285F4;">k</span><span style="color: #0F9D58;">e</span><span style="color: #DB4437;">r</span>
+    </h1>
+
+    <!-- Begin Input Form -->
+    <h2>Step 1: Enter Search Parameters</h2>
+    <form>
+        <table>
+            <tr>
+                <td><p>URL:</p></td>
+                <td><input type="text" id="url" placeholder="example.com" size="30"></input></td>
+            </tr>
+            <tr>
+                <td><p>Search Terms:</p></td>
+                <td><input type="text" id="searchTermInput" value="ssn, password, passwords, first name, last name, confidential" size="80"></input></td>
+            </tr>        
+            <tr>
+                <td><p>File Types:</p></td>
+                <td><input type="text" id="fileTypesInput" value="pdf, doc, docx, xls, xlsx, ppt, pptx" size="30"></input></td>
+            </tr>
+        </table>
+
+        <!-- Search Buttons -->
+        <h2>Step 2: Execute Search</h2>
+        <table id="buttonTable">
+            <tr id="logoRow">
+                <td>
+                    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" width="100%">
+                </td>
+                <td>
+                    <img src="https://duckduckgo.com/assets/logo_homepage.alt.v108.svg" width=100%>
+                </td>
+            </tr>
+            <tr id="btnRow">
+                <td id="googleBtns">
+                    <input type=button class="searchBtn" value="Search Google" width="100px" onclick="SearchGoogle()">
+                    <input type=button class="searchBtn" value="Search Google (Granular)" width="100px" class="granular" onclick="SearchGoogleGranular()">
+                </td>
+                <td id="DuckDuckGoBtns">
+                    <input type=button class="searchBtn" value="Search DuckDuckgo" onclick="SearchDuckDuckGo()">
+                    <input type=button class="searchBtn" value="Search DuckDuckgo (Granular)" onclick="SearchDuckDuckGoGranular()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <hr>
+
+    <p>INSTRUCTIONS: 
+        <ol>
+            <li>Enter a website, i.e. "yourdomain.com".</li>
+            <li>Click a button.</li>
+        </ol> 
+    </p>
+
+    <p>NOTE: Your browser will prevent this page from opening more than one new tab at a time. <b>You must allow popups for this page in order for this tool to work correclty.</b></p>
+    <p>NOTE: This tool opens many tabs at once. Your browser may get flagged for suspicious activity for making automated requests. When this happens, complete a captcha, close all the tabs, and re-run the search. You should be good for an hour or so.</p>
+    <p>GRANULAR: This option combines each search term with each file type to perform a more granular search. For example, if the search terms "ssn" and "password" are used with the file types "pdf" and "docx", the following searches will be performed:
+        <ul>
+            <li>site:example.com filetype:pdf "ssn"</li>
+            <li>site:example.com filetype:pdf "password"</li>
+            <li>site:example.com filetype:docx "ssn"</li>
+            <li>site:example.com filetype:docx "password"</li>
+        </ul>
+    </p>
+
 </body>
+
+<script type="text/javascript">
+    // Define Variables
+    // var filetypes = ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx"]
+        
+    function SearchGoogle() {
+        
+        // Get values from form
+        var url = document.getElementById('url').value
+        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+        //debug: 
+        console.log(searchTerms)
+    
+        // Search Google for search terms only
+        searchTerms.forEach(searchTerm =>
+            window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+            )    
+            
+        // Search Google for filetypes only
+        fileTypes.forEach(filetype =>
+            window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "&oq=site%3A" + url + "+filetype%3" + filetype + "&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+        )
+    }
+
+    function SearchGoogleGranular() {
+        // Get values from form
+        var url = document.getElementById('url').value
+        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+        // Search Google for each search term + filetype
+        fileTypes.forEach(filetype =>
+            searchTerms.forEach(searchTerm =>
+                window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+filetype%3" + filetype + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+            )
+        )
+    }
+    
+    function SearchDuckDuckGo() {
+    
+        // Get values from form
+        var url = document.getElementById('url').value
+        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+        // Search DuckDuckGo for search terms only
+        for(var searchTerm of searchTerms) {
+            window.open("https://duckduckgo.com/?q=site%3A+" + url + "+%22" + searchTerm + "%22&t=h_&ia=web")
+        }
+            
+        // Search DuckDuckGo for filetype only
+        for(var filetype of fileTypes){
+            window.open("https://duckduckgo.com/?q=site%3A+" + url + "+filetype%3A" + filetype + "&t=h_&ia=web")
+        }
+    }
+
+    function SearchDuckDuckGoGranular() {
+    
+        // Get values from form
+        var url = document.getElementById('url').value
+        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+        // Search DuckDuckGo for each search term + filetype
+        fileTypes.forEach(fileType =>
+            searchTerms.forEach(searchTerm =>
+                window.open("https://duckduckgo.com/?q=site%3A" + url + "+filetype%3A" + fileType + "+%22" + searchTerm + "%22&t=hk&ia=web")
+            )
+        )
+        // https://duckduckgo.com/?q=site%3Aarcticwolf.com+filetype%3Apdf+%22password%22&t=hk&ia=web
+    }
+
+</script>
 
 </html>
