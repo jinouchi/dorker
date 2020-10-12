@@ -47,7 +47,7 @@
         <table>
             <tr>
                 <td><p>URL:</p></td>
-                <td><input type="text" id="url" placeholder="example.com" size="30"></input></td>
+                <td><input type="text" id="url" placeholder="example.com, example2.com" size="30"></input></td>
             </tr>
             <tr>
                 <td><p>Search Terms:</p></td>
@@ -128,71 +128,92 @@
 <script type="text/javascript">
 
     function SearchGoogle() {
-        
-        // Get values from form
-        var url = document.getElementById('url').value
-        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
-        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
 
-        //debug: 
-        console.log(searchTerms)
-    
-        // Search Google for search terms only
-        searchTerms.forEach(searchTerm =>
-            window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
-            )    
-            
-        // Search Google for filetypes only
-        fileTypes.forEach(filetype =>
-            window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "&oq=site%3A" + url + "+filetype%3" + filetype + "&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
-        )
+        // Loop for each URL
+        var urls = (document.getElementById('url').value).split(', ');
+        for(var url of urls) {
+        
+            // Get values from form
+            // var url = document.getElementById('url').value
+            var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+            var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+            //debug: 
+            console.log(searchTerms)
+        
+            // Search Google for search terms only
+            searchTerms.forEach(searchTerm =>
+                window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+                )    
+                
+            // Search Google for filetypes only
+            fileTypes.forEach(filetype =>
+                window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "&oq=site%3A" + url + "+filetype%3" + filetype + "&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+            )
+        }
     }
 
     function SearchGoogleGranular() {
-        // Get values from form
-        var url = document.getElementById('url').value
-        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
-        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
 
-        // Search Google for each search term + filetype
-        fileTypes.forEach(filetype =>
-            searchTerms.forEach(searchTerm =>
-                window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+filetype%3" + filetype + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+        // Loop for each URL
+        var urls = (document.getElementById('url').value).split(', ');
+        for(var url of urls) {
+        
+            // Get values from form
+            // var url = document.getElementById('url').value
+            var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+            var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+            // Search Google for each search term + filetype
+            fileTypes.forEach(filetype =>
+                searchTerms.forEach(searchTerm =>
+                    window.open("https://www.google.com/search?source=hp&ei=7QxZX-XwMI-rtQbn6a6ADw&q=site%3A" + url + "+filetype%3A" + filetype + "+%22" + searchTerm + "%22&oq=site%3A" + url + "+filetype%3" + filetype + "+%22" + searchTerm + "%22&gs_lcp=CgZwc3ktYWIQA1DoGVjoGWC-H2gAcAB4AIABhgGIAYYBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwilm57syNzrAhWPVc0KHee0C_AQ4dUDCAk&uact=5")
+                )
             )
-        )
+        }
     }
     
     function SearchDuckDuckGo() {
-    
-        // Get values from form
-        var url = document.getElementById('url').value
-        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
-        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
 
-        // Search DuckDuckGo for search terms only
-        for(var searchTerm of searchTerms) {
-            window.open("https://duckduckgo.com/?q=site%3A+" + url + "+%22" + searchTerm + "%22&t=h_&ia=web")
-        }
-            
-        // Search DuckDuckGo for filetype only
-        for(var filetype of fileTypes){
-            window.open("https://duckduckgo.com/?q=site%3A+" + url + "+filetype%3A" + filetype + "&t=h_&ia=web")
+        // Loop for each URL
+        var urls = (document.getElementById('url').value).split(', ');
+        for(var url of urls) {
+
+            // Get values from form
+            // var url = document.getElementById('url').value
+            var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+            var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+            // Search DuckDuckGo for search terms only
+            for(var searchTerm of searchTerms) {
+                window.open("https://duckduckgo.com/?q=site%3A+" + url + "+%22" + searchTerm + "%22&t=h_&ia=web")
+            }
+                
+            // Search DuckDuckGo for filetype only
+            for(var filetype of fileTypes){
+                window.open("https://duckduckgo.com/?q=site%3A+" + url + "+filetype%3A" + filetype + "&t=h_&ia=web")
+            }
         }
     }
 
     function SearchDuckDuckGoGranular() {
-    
-        // Get values from form
-        var url = document.getElementById('url').value
-        var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
-        var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
 
-        // Search DuckDuckGo for each search term + filetype
-        fileTypes.forEach(fileType =>
-            searchTerms.forEach(searchTerm =>
-                window.open("https://duckduckgo.com/?q=site%3A" + url + "+filetype%3A" + fileType + "+%22" + searchTerm + "%22&t=hk&ia=web")
+        // Loop for each URL
+        var urls = (document.getElementById('url').value).split(', ');
+        for(var url of urls) {
+        
+            // Get values from form
+            // var url = document.getElementById('url').value
+            var searchTerms = (document.getElementById('searchTermInput').value).split(', ');
+            var fileTypes = (document.getElementById('fileTypesInput').value).split(', ');
+
+            // Search DuckDuckGo for each search term + filetype
+            fileTypes.forEach(fileType =>
+                searchTerms.forEach(searchTerm =>
+                    window.open("https://duckduckgo.com/?q=site%3A" + url + "+filetype%3A" + fileType + "+%22" + searchTerm + "%22&t=hk&ia=web")
+                )
             )
-        )
+        }
     }
 
 </script>
