@@ -33,6 +33,10 @@
             width: 100%;
             background-color: #111111;
         }
+        .important {
+            color:red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -85,6 +89,8 @@
 
     <hr>
 
+    <p>Disclaimer: This is an experimental tool. Use at your own risk.</p>
+
     <h2>INSTRUCTIONS:</h3>
     <p>
         <ol>
@@ -93,9 +99,9 @@
         </ol> 
     </p>
 
-    <p>NOTE: Your browser will prevent this page from opening more than one new tab at a time. <b>You must allow popups for this page in order for this tool to work correclty.</b></p>
-    <p>NOTE: This tool opens many tabs at once. Your browser may get flagged for suspicious activity for making automated requests. When this happens, complete a captcha, close all the tabs, and re-run the search. You should be good for an hour or so.</p>
-    <p>GRANULAR: This option combines each search term with each file type to perform a more granular search. For example, if the search terms "ssn" and "password" are used with the file types "pdf" and "docx", the following searches will be performed:
+    <p>NOTE: Your browser will prevent this page from opening more than one new tab at a time. <span class="important">You must allow popups for this page in order for this tool to work correclty.</span></p>
+    <p>NOTE: This tool opens many tabs at once. Your browser may get flagged for suspicious activity for making automated requests. When this happens, <span class="important">complete a captcha, close all the tabs, and re-run the search.</span> You should be good for an hour or so.</p>
+    <p>GRANULAR: <span class="important">WARNING: USE WITH CAUTION. </span>It is recommended that the "granular" option be used only with carefully crafted custom searches. This option combines each search term with each file type to perform a more granular search (which may result in MANY tabs being opened). For example, if the search terms "ssn" and "password" are used with the file types "pdf" and "docx", the following searches will be performed:
         <ul>
             <li>site:example.com filetype:pdf "ssn"</li>
             <li>site:example.com filetype:pdf "password"</li>
@@ -121,8 +127,6 @@
     <h3>File Extensions: Virtual Machines</h3>
     <p>vhd, vmdk, vmx, nvram, vmem, vmss, log, vmsd, vmsn, vmtm, vmxf, ova, ovf, vdi, vhd, qemu2, vbox</p>
   
-    <p>Disclaimer: This is an experimental tool. Use at your own risk.</p>
-
 </body>
 
 <script type="text/javascript">
